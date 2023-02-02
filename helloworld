@@ -1,13 +1,19 @@
 using System;
-using System.Web.UI;
+using System.Web.Http;
 
-namespace HelloWorld
+namespace HelloWorld.Controllers
 {
-    public partial class HelloWorld : Page
+    public class HelloWorldController : ApiController
     {
-        protected void Page_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Returns the string "Hello World!"
+        /// </summary>
+        /// <returns>string "Hello World!"</returns>
+        [Route("api/HelloWorld")]
+        [HttpGet]
+        public IHttpActionResult GetHelloWorldMessage()
         {
-            Response.Write("Hello World!");
+            return Ok("Hello World!");
         }
     }
 }
